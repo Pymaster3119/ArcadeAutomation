@@ -3,7 +3,11 @@ from tkinter import messagebox
 import math
 import os
 import pygame
+import time
+from selenium import webdriver
 
+#Add geckodriver to PATH
+os.system("export PATH=$PATH:" + os.path.realpath("geckodriver").removesuffix("/geckodriver"))
 pygame.mixer.init()
 tk = Tk("Arcade Automation - GIT Management, Slack calls, Timer")
 tk.geometry("500x500")
@@ -13,7 +17,14 @@ sessionDescription = StringVar(tk)
 remoteOrigin = StringVar(tk)
 timeRemaining = StringVar(tk)
 directory = StringVar(tk)
+arcadeLink ="https://hackclub.slack.com/archives/C06SBHMQU8G"
+username = StringVar(tk)
+password = StringVar(tk)
 secondsRemaining = 10#3600
+driver = webdriver.Firefox()
+
+
+
 
 #Main Menu
 def drawMainMenu():
@@ -28,14 +39,31 @@ def drawStartSession():
     Entry(frame, textvariable=sessionDescription).grid(row = 0, column= 1)
     Label(frame, text= "Enter your GitHub Repo's remote origin:").grid(row=1, column=0)
     Entry(frame, textvariable=remoteOrigin).grid(row = 1, column= 1)
-    Label(frame, text= "Enter your files' parent directory").grid(row=2, column=0)
+    Label(frame, text= "Enter your files' parent directory: ").grid(row=2, column=0)
     Entry(frame, textvariable=directory).grid(row = 2, column= 1)
-    Button(frame, text= "Start Session!", command=drawTimer).grid(row = 3, column= 0, columnspan = 2, sticky = W+E)
+    Label(frame, text= "Enter your slack Username: ").grid(row=4, column=0)
+    Entry(frame, textvariable=username).grid(row = 4, column= 1)
+    Label(frame, text= "Enter your slack Password: ").grid(row=5, column=0)
+    Entry(frame, textvariable=password).grid(row = 5, column= 1)
+    Button(frame, text= "Start Session!", command=drawTimer).grid(row = 6, column= 0, columnspan = 2, sticky = W+E)
 
 def drawTimer():
     for widget in frame.winfo_children():
         widget.destroy()
     secondsRemaining = 10#3600
+    #send /arcade to slack
+    driver.get(arcadeLink)
+    time.sleep(0.1)
+    usernamebox = driver.find_element_by_id("signup_email")
+    usernamebox.send_keys(username.get())
+    messagebox.showinfo("Check your e-mail for sign in credentials on and check your terminal for an input statement that asks for the code")
+    code = input("What is your login code? (no dash)")
+    driver.maximize_window()
+    driver.get_screenshot_as_file("test.png")
+
+
+    
+
     Label(frame, textvariable=timeRemaining).grid(row=0,column=0)
     updateTimer()
 
@@ -59,8 +87,8 @@ def endSession():
     os.system("git remote add origin " + remoteOrigin.get())
     os.system("git push -u origin main")
 
-    
-    #Upload stuff to Slack and git commit, etc
+    #Upload stuff to Slack
+
     drawStartSession()
     
 def searchPath(pathname):
