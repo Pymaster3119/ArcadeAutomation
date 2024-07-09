@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 import math
 import os
 import pygame
@@ -20,6 +21,7 @@ def drawMainMenu():
     Button(frame, text= "Start megasession", command= drawStartSession).grid(row=1, column=0)
 
 def drawStartSession():
+    playSound("restartSession.mp3")
     for widget in frame.winfo_children():
         widget.destroy()
     Label(frame, text= "Describe your session's goals:").grid(row=0, column=0)
@@ -70,6 +72,7 @@ def searchPath(pathname):
                 os.system(f"git add " + os.path.realpath(file))
             else:
                 playSound('fileTooLarge.mp3')
+                messagebox.showerror("File " + os.path.realpath(file) + " is larger than GitHub's 100MB file limit. Please shrink file or upload manually.")
         else:
             searchPath(os.path.realpath(file))
 
