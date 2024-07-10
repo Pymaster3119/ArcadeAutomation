@@ -114,7 +114,8 @@ def endSession():
     reply = driver.find_element_by_css_selector("[data-qa=\"message_input\"]")
     actions.click(on_element=reply)
     actions.send_keys(gitLink.get() + "\n").perform()
-    actions.send_keys(Keys.ENTER)
+    sendbutton = driver.find_element_by_css_selector("[data-qa='texty_send_button']")
+    sendbutton.click()
     drawStartSession()
     
 def searchPath(pathname):
