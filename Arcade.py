@@ -23,8 +23,9 @@ timeRemaining = StringVar(tk)
 directory = StringVar(tk)
 arcadeLink ="https://hackclub.slack.com/archives/C06SBHMQU8G"
 username = StringVar(tk)
-password = StringVar(tk)
+gitLink = StringVar(tk)
 secondsRemaining = 10#3600
+driver = webdriver.Firefox(executable_path=os.path.realpath("geckodriver"))
 
 
 
@@ -43,24 +44,24 @@ def drawStartSession():
     Entry(frame, textvariable=sessionDescription).grid(row = 0, column= 1)
     Label(frame, text= "Enter your GitHub Repo's remote origin:").grid(row=1, column=0)
     Entry(frame, textvariable=remoteOrigin).grid(row = 1, column= 1)
-    Label(frame, text= "Enter your files' parent directory: ").grid(row=2, column=0)
+    Label(frame, text= "Enter your files' Parent Directory: ").grid(row=2, column=0)
     Entry(frame, textvariable=directory).grid(row = 2, column= 1)
     Label(frame, text= "Enter your slack Username: ").grid(row=4, column=0)
     Entry(frame, textvariable=username).grid(row = 4, column= 1)
-    Label(frame, text= "Enter your slack Password: ").grid(row=5, column=0)
-    Entry(frame, textvariable=password).grid(row = 5, column= 1)
+    Label(frame, text= "Enter your gitHub Repo Link: ").grid(row=5, column=0)
+    Entry(frame, textvariable=gitLink).grid(row = 5, column= 1)
     Button(frame, text= "Start Session!", command=drawTimer).grid(row = 6, column= 0, columnspan = 2, sticky = W+E)
 
 def drawTimer():
     for widget in frame.winfo_children():
         widget.destroy()
     secondsRemaining = 10#3600
-    #send /arcade to slack
-    options = Options()
-    options.add_argument("--headless")
-    driver = webdriver.Firefox(executable_path=os.path.realpath("geckodriver"), options=options)
+
+    #open arcade
     driver.get(arcadeLink)
     time.sleep(0.1)
+
+    #signin using email authentication
     usernamebox = driver.find_element_by_id("signup_email")
     usernamebox.send_keys(username.get())
     submitbutton = driver.find_element_by_id("submit_btn")
@@ -68,15 +69,17 @@ def drawTimer():
     code = input("What is your login code? (no dash)")
     codeEntry = driver.find_element_by_xpath("/html/body/div[1]/div[1]/form/div/fieldset/div/div[1]/div[1]/input")
     codeEntry.send_keys(code)
+
+    #Redirections
     wait = WebDriverWait(driver, 60)
     redirect = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[2]/p/a[2]")))
     redirect.click()
-    time.sleep(3)
     messagebox = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div[1]")))
-    messagebox.send_keys("/cad " + sessionDescription.get() + "\n")
+
+    #Send the message
+    messagebox.send_keys("/arcade " + sessionDescription.get() + "\n")
     sendbutton = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[3]/div[3]/span/button[1]")
     sendbutton.click()
-    sendbutton.click
 
     Label(frame, textvariable=timeRemaining).grid(row=0,column=0)
     updateTimer()
@@ -102,6 +105,10 @@ def endSession():
     os.system("git push -u origin main")
 
     #Upload stuff to Slack
+    threads = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
+    threads.click()
+    reply = driver.find_element_by_class_name("ql-editor ql-blank")
+    reply.send_keys(gitLink.get() + "\n\n")
 
     drawStartSession()
     

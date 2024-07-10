@@ -298,3 +298,116 @@ JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb
 1720578971707	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
 JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.10e3a2414f6387ef3e58.min.js?cacheKey=gantry-1720572456, line 188: unreachable code after return statement
 1720578981283	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1720579535107	geckodriver	INFO	Listening on 127.0.0.1:56885
+1720579536111	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... " "--headless" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofilea7bdiP"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720579536434	Marionette	INFO	Marionette enabled
+1720579536649	Marionette	INFO	Listening on port 56892
+1720579536746	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+1720579566944	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+1720579571196	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.10e3a2414f6387ef3e58.min.js?cacheKey=gantry-1720572456, line 188: unreachable code after return statement
+1720579745502	geckodriver	INFO	Listening on 127.0.0.1:57097
+1720579746511	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofile7OmtA2"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720579746823	Marionette	INFO	Marionette enabled
+1720579747059	Marionette	INFO	Listening on port 57104
+1720579747155	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+1720579770548	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.10e3a2414f6387ef3e58.min.js?cacheKey=gantry-1720572456, line 188: unreachable code after return statement
+1720579777024	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript error: resource://gre/modules/PrivateBrowsingUtils.sys.mjs, line 19: TypeError: aWindow is null
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.9776aab70646b7b829f4.min.js?cacheKey=gantry-1720572456, line 111: Script terminated by timeout at:
+isDisabled@https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.9776aab70646b7b829f4.min.js?cacheKey=gantry-1720572456:111:41335
+sendDataAndEmptyQueue@https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.9776aab70646b7b829f4.min.js?cacheKey=gantry-1720572456:111:43730
+
+1720579976635	geckodriver	INFO	Listening on 127.0.0.1:57272
+1720579977643	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofile869ReY"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720579977956	Marionette	INFO	Marionette enabled
+1720579978188	Marionette	INFO	Listening on port 57279
+1720579978285	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+1720579997367	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.10e3a2414f6387ef3e58.min.js?cacheKey=gantry-1720572456, line 188: unreachable code after return statement
+1720580008790	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1720580050498	geckodriver	INFO	Listening on 127.0.0.1:57468
+1720580051508	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofileAG5zYo"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720580051815	Marionette	INFO	Marionette enabled
+1720580052057	Marionette	INFO	Listening on port 57475
+1720580052161	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1720580082436	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+1720580108026	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.10e3a2414f6387ef3e58.min.js?cacheKey=gantry-1720572456, line 188: unreachable code after return statement
+console.error: "Error while calling actor 'pagestyle's method 'getLayout'" "node is null"
+console.error: (new TypeError("parent is null", "resource://devtools/client/inspector/shared/style-change-tracker.js", 67))
+TypeError: parent is null: canMutationImpactCurrentStyles@resource://devtools/client/inspector/shared/style-change-tracker.js:67:24
+onMutations@resource://devtools/client/inspector/shared/style-change-tracker.js:84:41
+_emit@resource://devtools/shared/event-emitter.js:242:32
+emit@resource://devtools/shared/event-emitter.js:186:18
+emit@resource://devtools/shared/event-emitter.js:330:18
+getMutations@resource://devtools/client/fronts/walker.js:321:10
+
+console.error: (new TypeError("node is null", "resource://devtools/server/actors/page-style.js", 930))
+console.error: (new TypeError("container.node.targetFront is null", "resource://devtools/client/inspector/markup/markup.js", 2415))
+console.error: (new TypeError("container.node.targetFront is null", "resource://devtools/client/inspector/markup/markup.js", 2415))
+console.error: (new TypeError("container.node.targetFront is null", "resource://devtools/client/inspector/markup/markup.js", 2415))
+console.error: (new Error("Protocol error (TypeError): node is null from: server0.conn0.process3//pagestyle225 (resource://devtools/server/actors/page-style.js:930:29)", "resource://devtools/shared/protocol/Front.js", 382))
+console.warn: "Listener for event 'frame' did not return a promise."
+console.warn: "Error while destroying front:" "inspector" (new Error("Connection closed, pending request to server0.conn0.process3//inspectorActor2072, type getWalker failed\n\nRequest stack:\nrequest@resource://devtools/shared/protocol/Front.js:299:14\ngenerateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:47:19\n_getWalker@resource://devtools/client/fronts/inspector.js:84:30\ninitialize@resource://devtools/client/fronts/inspector.js:73:12\n", "resource://devtools/shared/protocol/Front.js", 105))
+console.error: "Failed to start [root-node] legacy listener for target null" (new Error("Connection closed, pending request to server0.conn0.process3//inspectorActor2072, type getWalker failed\n\nRequest stack:\nrequest@resource://devtools/shared/protocol/Front.js:299:14\ngenerateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:47:19\n_getWalker@resource://devtools/client/fronts/inspector.js:84:30\ninitialize@resource://devtools/client/fronts/inspector.js:73:12\n", "resource://devtools/shared/protocol/Front.js", 105))
+JavaScript error: resource://devtools/shared/protocol/Front.js, line 105: Error: Connection closed, pending request to server0.conn0.process3//inspectorActor2072, type getWalker failed
+
+Request stack:
+request@resource://devtools/shared/protocol/Front.js:299:14
+generateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:47:19
+_getWalker@resource://devtools/client/fronts/inspector.js:84:30
+initialize@resource://devtools/client/fronts/inspector.js:73:12
+
+console.warn: "Listener for event 'frame' did not return a promise."
+console.warn: "Error while destroying front:" "inspector" (new Error("Connection closed, pending request to server0.conn0.process3//inspectorActor2091, type getWalker failed\n\nRequest stack:\nrequest@resource://devtools/shared/protocol/Front.js:299:14\ngenerateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:47:19\n_getWalker@resource://devtools/client/fronts/inspector.js:84:30\ninitialize@resource://devtools/client/fronts/inspector.js:73:12\n", "resource://devtools/shared/protocol/Front.js", 105))
+console.error: "Failed to start [root-node] legacy listener for target null" (new Error("Connection closed, pending request to server0.conn0.process3//inspectorActor2091, type getWalker failed\n\nRequest stack:\nrequest@resource://devtools/shared/protocol/Front.js:299:14\ngenerateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:47:19\n_getWalker@resource://devtools/client/fronts/inspector.js:84:30\ninitialize@resource://devtools/client/fronts/inspector.js:73:12\n", "resource://devtools/shared/protocol/Front.js", 105))
+JavaScript error: resource://devtools/shared/protocol/Front.js, line 105: Error: Connection closed, pending request to server0.conn0.process3//inspectorActor2091, type getWalker failed
+
+Request stack:
+request@resource://devtools/shared/protocol/Front.js:299:14
+generateRequestMethods/</frontProto[name]@resource://devtools/shared/protocol/Front/FrontClassWithSpec.js:47:19
+_getWalker@resource://devtools/client/fronts/inspector.js:84:30
+initialize@resource://devtools/client/fronts/inspector.js:73:12
+
+1720580561467	geckodriver	INFO	Listening on 127.0.0.1:57708
+1720580562483	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofileXx7eAo"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720580562805	Marionette	INFO	Marionette enabled
+1720580563042	Marionette	INFO	Listening on port 57716
+1720580563216	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1720580574977	Marionette	WARN	Ignoring event 'DOMContentLoaded' because document has an invalid readyState of 'complete'.
+JavaScript warning: https://www.youtube.com/s/desktop/eed58959/jsbin/desktop_polymer.vflset/desktop_polymer.js, line 2692: Script terminated by timeout at:
+vq.prototype.transition@https://www.youtube.com/s/desktop/eed58959/jsbin/desktop_polymer.vflset/desktop_polymer.js:2692:33
+FO/<@https://www.youtube.com/s/desktop/eed58959/jsbin/desktop_polymer.vflset/desktop_polymer.js:11616:114
+
+1720580592998	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+1720580646463	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.10e3a2414f6387ef3e58.min.js?cacheKey=gantry-1720572456, line 188: unreachable code after return statement
