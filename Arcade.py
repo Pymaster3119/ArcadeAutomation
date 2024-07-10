@@ -108,7 +108,7 @@ def endSession():
     threads = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
     threads.click()
     wait = WebDriverWait(driver, 10)
-    reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "div[data-qa=\"message_input\"]")))
+    reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
     reply.send_keys(gitLink.get() + "\n\n")
 
     drawStartSession()
