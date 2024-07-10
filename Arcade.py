@@ -110,6 +110,7 @@ def endSession():
     wait = WebDriverWait(driver, 10)
     actions = ActionChains(driver)
     reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
+    reply = driver.find_element_by_css_selector("[data-qa=\"message_input\"]")
     actions.click(on_element=reply)
     actions.send_keys(gitLink.get() + "\n").perform()
 
