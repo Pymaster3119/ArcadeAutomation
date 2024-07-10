@@ -9,6 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 
 #Add geckodriver to PATH
 #os.system("export PATH=$PATH:" + os.path.realpath("geckodriver"))
@@ -113,7 +114,7 @@ def endSession():
     reply = driver.find_element_by_css_selector("[data-qa=\"message_input\"]")
     actions.click(on_element=reply)
     actions.send_keys(gitLink.get() + "\n").perform()
-
+    actions.send_keys(Keys.ENTER)
     drawStartSession()
     
 def searchPath(pathname):
