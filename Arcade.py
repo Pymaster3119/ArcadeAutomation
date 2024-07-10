@@ -28,7 +28,7 @@ gitLink = StringVar(tk)
 secondsRemaining = 10#3600
 driver = webdriver.Firefox(executable_path=os.path.realpath("geckodriver"))
 loggedIn = False
-
+addToSlack = BooleanVar(tk)
 
 
 
@@ -52,43 +52,44 @@ def drawStartSession():
     Entry(frame, textvariable=username).grid(row = 4, column= 1)
     Label(frame, text= "Enter your gitHub Repo Link: ").grid(row=5, column=0)
     Entry(frame, textvariable=gitLink).grid(row = 5, column= 1)
-    Button(frame, text= "Start Session!", command=drawTimer).grid(row = 6, column= 0, columnspan = 2, sticky = W+E)
+    Checkbutton(frame, text= "Upload to slack", variable=addToSlack).grid(row = 6, column= 0)
+    Button(frame, text= "Start Session!", command=drawTimer).grid(row = 7, column= 0, columnspan = 2, sticky = W+E)
 
 def drawTimer():
     global loggedIn
     for widget in frame.winfo_children():
         widget.destroy()
     secondsRemaining = 10#3600
+    if (addToSlack.get()):
+        if (not loggedIn):
+            #open arcade
+            driver.get(arcadeLink)
+            time.sleep(0.1)
 
-    if (not loggedIn):
-        #open arcade
-        driver.get(arcadeLink)
-        time.sleep(0.1)
+            #signin using email authentication
+            usernamebox = driver.find_element_by_id("signup_email")
+            usernamebox.send_keys(username.get())
+            submitbutton = driver.find_element_by_id("submit_btn")
+            submitbutton.click()
+            code = input("What is your login code? (no dash)")
+            codeEntry = driver.find_element_by_xpath("/html/body/div[1]/div[1]/form/div/fieldset/div/div[1]/div[1]/input")
+            codeEntry.send_keys(code)
 
-        #signin using email authentication
-        usernamebox = driver.find_element_by_id("signup_email")
-        usernamebox.send_keys(username.get())
-        submitbutton = driver.find_element_by_id("submit_btn")
-        submitbutton.click()
-        code = input("What is your login code? (no dash)")
-        codeEntry = driver.find_element_by_xpath("/html/body/div[1]/div[1]/form/div/fieldset/div/div[1]/div[1]/input")
-        codeEntry.send_keys(code)
+            #Redirections
+            wait = WebDriverWait(driver, 60)
+            redirect = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[2]/p/a[2]")))
+            redirect.click()
+            loggedIn = True
+        else:
+            arcadebutton = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[5]/div/span[1]/span")
+            ActionChains().click(arcadebutton)
+        
+        messagebox = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div[1]")))
 
-        #Redirections
-        wait = WebDriverWait(driver, 60)
-        redirect = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[2]/p/a[2]")))
-        redirect.click()
-        loggedIn = True
-    else:
-        arcadebutton = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[5]/div/span[1]/span")
-        ActionChains().click(arcadebutton)
-    
-    messagebox = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div[1]")))
-
-    #Send the message
-    messagebox.send_keys("/arcade " + sessionDescription.get() + "\n")
-    sendbutton = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[3]/div[3]/span/button[1]")
-    sendbutton.click()
+        #Send the message
+        messagebox.send_keys("/arcade " + sessionDescription.get() + "\n")
+        sendbutton = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[3]/div[3]/span/button[1]")
+        sendbutton.click()
 
     Label(frame, textvariable=timeRemaining).grid(row=0,column=0)
     updateTimer()
