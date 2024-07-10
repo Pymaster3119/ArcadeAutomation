@@ -107,7 +107,8 @@ def endSession():
     #Upload stuff to Slack
     threads = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
     threads.click()
-    reply = driver.find_element_by_class_name("ql-editor ql-blank")
+    wait = WebDriverWait(driver, 60)
+    reply = wait.until(expected_conditions.visibility_of_element_located((By.CLASS_NAME, "ql-editor ql-blank")))
     reply.send_keys(gitLink.get() + "\n\n")
 
     drawStartSession()
