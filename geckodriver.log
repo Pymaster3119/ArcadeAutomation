@@ -598,3 +598,37 @@ JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb
 JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
 1720584294637	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
 JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.10e3a2414f6387ef3e58.min.js?cacheKey=gantry-1720579056, line 188: unreachable code after return statement
+JavaScript error: resource:///modules/sessionstore/SessionStore.sys.mjs, line 3573: TypeError: this._windows[aWindow.__SSi] is undefined
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.9776aab70646b7b829f4.min.js?cacheKey=gantry-1720579056, line 111: Script terminated by timeout at:
+isDisabled@https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.9776aab70646b7b829f4.min.js?cacheKey=gantry-1720579056:111:41335
+sendDataAndEmptyQueue@https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.9776aab70646b7b829f4.min.js?cacheKey=gantry-1720579056:111:43730
+
+1720629212704	geckodriver	INFO	Listening on 127.0.0.1:64796
+1720629213644	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofile8lV4Xc"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720629218137	Marionette	INFO	Marionette enabled
+1720629218590	Marionette	INFO	Listening on port 64803
+1720629218693	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1720629248300	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1720629517806	geckodriver	INFO	Listening on 127.0.0.1:65380
+1720629518814	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofilee8laAr"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720629519129	Marionette	INFO	Marionette enabled
+1720629519372	Marionette	INFO	Listening on port 65392
+1720629519472	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1720629550092	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1720629633034	geckodriver	INFO	Listening on 127.0.0.1:49523
+1720629634050	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofileIHQv0k"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720629634401	Marionette	INFO	Marionette enabled
+1720629634688	Marionette	INFO	Listening on port 49535
+1720629634786	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1720629665357	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+1720629751063	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.10e3a2414f6387ef3e58.min.js?cacheKey=gantry-1720625855, line 188: unreachable code after return statement
