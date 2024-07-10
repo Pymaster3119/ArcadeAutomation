@@ -8,7 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.common.action_chains import ActionChains
 
 #Add geckodriver to PATH
 #os.system("export PATH=$PATH:" + os.path.realpath("geckodriver"))
@@ -109,7 +109,9 @@ def endSession():
     threads.click()
     wait = WebDriverWait(driver, 10)
     reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
-    reply.send_keys(gitLink.get() + "\n\n")
+    reply.click()
+    actions = ActionChains(driver)
+    actions.send_keys(gitLink.get() + "\n").perform()
 
     drawStartSession()
     
