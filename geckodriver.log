@@ -424,3 +424,16 @@ JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb
 JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
 1720580845179	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
 JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.10e3a2414f6387ef3e58.min.js?cacheKey=gantry-1720572456, line 188: unreachable code after return statement
+1720581005279	geckodriver	INFO	Listening on 127.0.0.1:58115
+1720581006293	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofilecSG9gn"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720581006615	Marionette	INFO	Marionette enabled
+1720581006854	Marionette	INFO	Listening on port 58124
+1720581007018	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1720581037665	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+1720581071447	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.10e3a2414f6387ef3e58.min.js?cacheKey=gantry-1720572456, line 188: unreachable code after return statement
