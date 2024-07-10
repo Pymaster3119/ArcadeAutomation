@@ -5,9 +5,13 @@ import os
 import pygame
 import time
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.firefox.options import Options
 
 #Add geckodriver to PATH
-os.system("export PATH=$PATH:" + os.path.realpath("geckodriver").removesuffix("/geckodriver"))
+#os.system("export PATH=$PATH:" + os.path.realpath("geckodriver"))
 pygame.mixer.init()
 tk = Tk("Arcade Automation - GIT Management, Slack calls, Timer")
 tk.geometry("500x500")
@@ -21,7 +25,7 @@ arcadeLink ="https://hackclub.slack.com/archives/C06SBHMQU8G"
 username = StringVar(tk)
 password = StringVar(tk)
 secondsRemaining = 10#3600
-driver = webdriver.Firefox()
+
 
 
 
@@ -52,17 +56,27 @@ def drawTimer():
         widget.destroy()
     secondsRemaining = 10#3600
     #send /arcade to slack
+    options = Options()
+    options.add_argument("--headless")
+    driver = webdriver.Firefox(executable_path=os.path.realpath("geckodriver"), options=options)
     driver.get(arcadeLink)
     time.sleep(0.1)
     usernamebox = driver.find_element_by_id("signup_email")
     usernamebox.send_keys(username.get())
-    messagebox.showinfo("Check your e-mail for sign in credentials on and check your terminal for an input statement that asks for the code")
+    submitbutton = driver.find_element_by_id("submit_btn")
+    submitbutton.click()
     code = input("What is your login code? (no dash)")
-    driver.maximize_window()
-    driver.get_screenshot_as_file("test.png")
-
-
-    
+    codeEntry = driver.find_element_by_xpath("/html/body/div[1]/div[1]/form/div/fieldset/div/div[1]/div[1]/input")
+    codeEntry.send_keys(code)
+    wait = WebDriverWait(driver, 60)
+    redirect = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[2]/p/a[2]")))
+    redirect.click()
+    time.sleep(3)
+    messagebox = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div[1]")))
+    messagebox.send_keys("/cad " + sessionDescription.get() + "\n")
+    sendbutton = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[3]/div[3]/span/button[1]")
+    sendbutton.click()
+    sendbutton.click
 
     Label(frame, textvariable=timeRemaining).grid(row=0,column=0)
     updateTimer()
