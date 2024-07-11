@@ -723,3 +723,34 @@ JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb
 JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
 1720661369841	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
 JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.25ad7ae079ce3b1240c4.min.js?cacheKey=gantry-1720656750, line 188: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.155f499a74ab894d109b.min.js?cacheKey=gantry-1720656750, line 111: Script terminated by timeout at:
+measure@https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.155f499a74ab894d109b.min.js?cacheKey=gantry-1720656750:111:38163
+createBeaconURLs@https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.155f499a74ab894d109b.min.js?cacheKey=gantry-1720656750:111:39774
+656453/sendDataAndEmptyQueue/<@https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.155f499a74ab894d109b.min.js?cacheKey=gantry-1720656750:111:43892
+sendDataAndEmptyQueue@https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.155f499a74ab894d109b.min.js?cacheKey=gantry-1720656750:111:43867
+
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.25ad7ae079ce3b1240c4.min.js?cacheKey=gantry-1720656750, line 188: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+1720661435130	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/ssb-redirect-core.2adf0e46d2780da0e9d4.primer.min.js, line 325: Script terminated by timeout at:
+lf</16371/C<@https://a.slack-edge.com/bv1-13-br/ssb-redirect-core.2adf0e46d2780da0e9d4.primer.min.js:325:377067
+
+JavaScript error: resource://gre/modules/PrivateBrowsingUtils.sys.mjs, line 19: TypeError: aWindow is null
+JavaScript warning: https://hackclub.com/_next/static/chunks/main-5c5b85003461b8df.js, line 1: Script terminated by timeout at:
+o@https://hackclub.com/_next/static/chunks/main-5c5b85003461b8df.js:1:109507
+78018/U/<@https://hackclub.com/_next/static/chunks/main-5c5b85003461b8df.js:1:109986
+r@https://hackclub.com/_next/static/chunks/main-5c5b85003461b8df.js:1:105720
+
+1720661807999	geckodriver	INFO	Listening on 127.0.0.1:49177
+1720661809008	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofileC9VKQ2"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720661809374	Marionette	INFO	Marionette enabled
+1720661809601	Marionette	INFO	Listening on port 49188
+1720661809780	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1720661839948	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+1720661891622	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.25ad7ae079ce3b1240c4.min.js?cacheKey=gantry-1720656750, line 188: unreachable code after return statement
