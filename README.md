@@ -2,7 +2,7 @@
 This was created to automate the commit process for Arcade and automatically commits code to GitHub and runs slack commands for users every hour.
 To commit, I use the command line and the following commands:
     git init
-    (for each file less than 100MB) git add <filename>
+    git add --allg
     git commit -m "<user message>"
     git branch -M main
     git remote add origin <origin>

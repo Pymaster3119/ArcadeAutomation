@@ -664,3 +664,62 @@ console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1
 1720644327614	Marionette	INFO	Listening on port 59369
 1720644327755	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
 1720644358067	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript error: resource:///modules/sessionstore/SessionStore.sys.mjs, line 3573: TypeError: this._windows[aWindow.__SSi] is undefined
+1720644991168	geckodriver	INFO	Listening on 127.0.0.1:59607
+1720644992173	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... " "--headless" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofileP23ewI"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720644992524	Marionette	INFO	Marionette enabled
+1720644992735	Marionette	INFO	Listening on port 59615
+1720644992836	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+1720645023928	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+1720648527244	Marionette	INFO	Stopped listening on port 55603
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1720648529203	Marionette	INFO	Stopped listening on port 60653
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1720648533907	Marionette	INFO	Stopped listening on port 58051
+1720648538111	Marionette	INFO	Stopped listening on port 59369
+1720660077527	geckodriver	INFO	Listening on 127.0.0.1:64388
+1720660077935	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... " "--headless" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofileCclWsP"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720660079247	Marionette	INFO	Marionette enabled
+1720660079576	Marionette	INFO	Listening on port 64398
+1720660079708	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+1720660110266	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+1720660297554	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.25ad7ae079ce3b1240c4.min.js?cacheKey=gantry-1720654050, line 188: unreachable code after return statement
+1720661050514	geckodriver	INFO	Listening on 127.0.0.1:65050
+1720661051527	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofileths12Q"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720661051878	Marionette	INFO	Marionette enabled
+1720661052122	Marionette	INFO	Listening on port 65065
+1720661052298	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1720661083433	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript error: resource:///modules/sessionstore/SessionStore.sys.mjs, line 3573: TypeError: this._windows[aWindow.__SSi] is undefined
+1720661188187	Marionette	INFO	Stopped listening on port 65065
+console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1720661190613	geckodriver	INFO	Listening on 127.0.0.1:65131
+1720661191624	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofile4NCIjc"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720661191940	Marionette	INFO	Marionette enabled
+1720661192202	Marionette	INFO	Listening on port 65138
+1720661192337	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1720661223321	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+1720661369841	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.25ad7ae079ce3b1240c4.min.js?cacheKey=gantry-1720656750, line 188: unreachable code after return statement

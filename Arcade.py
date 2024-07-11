@@ -9,10 +9,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.firefox.options import Options
 
-#Add geckodriver to PATH
-#os.system("export PATH=$PATH:" + os.path.realpath("geckodriver"))
+options = Options()
+options.add_argument('--headless')
+
 pygame.mixer.init()
 tk = Tk("Arcade Automation - GIT Management, Slack calls, Timer")
 tk.geometry("500x500")
@@ -24,9 +25,10 @@ timeRemaining = StringVar(tk)
 directory = StringVar(tk)
 arcadeLink ="https://hackclub.slack.com/archives/C06SBHMQU8G"
 username = StringVar(tk)
-gitLink = StringVar(tk)
-secondsRemaining = 10#3600
-driver = webdriver.Firefox(executable_path=os.path.realpath("geckodriver"))
+gitUsername = StringVar(tk)
+gitPassword = StringVar(tk)
+secondsRemaining = 10
+driver = webdriver.Firefox(executable_path=os.path.realpath("geckodriver"))#, options=options)
 loggedIn = False
 addToSlack = BooleanVar(tk)
 
@@ -50,16 +52,18 @@ def drawStartSession():
     Entry(frame, textvariable=directory).grid(row = 2, column= 1)
     Label(frame, text= "Enter your slack Username: ").grid(row=4, column=0)
     Entry(frame, textvariable=username).grid(row = 4, column= 1)
-    Label(frame, text= "Enter your gitHub Repo Link: ").grid(row=5, column=0)
-    Entry(frame, textvariable=gitLink).grid(row = 5, column= 1)
-    Checkbutton(frame, text= "Upload to slack", variable=addToSlack).grid(row = 6, column= 0)
-    Button(frame, text= "Start Session!", command=drawTimer).grid(row = 7, column= 0, columnspan = 2, sticky = W+E)
+    Label(frame, text= "Enter your gitHub username: ").grid(row=5, column=0)
+    Entry(frame, textvariable=gitUsername).grid(row = 5, column= 1)
+    Label(frame, text= "Enter your gitHub password: ").grid(row=6, column=0)
+    Entry(frame, textvariable=gitPassword).grid(row = 6, column= 1)
+    Checkbutton(frame, text= "Upload to slack", variable=addToSlack).grid(row = 7, column= 0)
+    Button(frame, text= "Start Session!", command=drawTimer).grid(row = 8, column= 0, columnspan = 2, sticky = W+E)
 
 def drawTimer():
     global loggedIn
     for widget in frame.winfo_children():
         widget.destroy()
-    secondsRemaining = 10#3600
+    secondsRemaining = 10
     if (addToSlack.get()):
         if (not loggedIn):
             #open arcade
@@ -107,38 +111,47 @@ def updateTimer():
 
 def endSession():
     #Git commit
+    os.system("cd " + directory.get())
     os.system("git init")
-    searchPath(directory.get())
+    os.system("git add --all")
+    #searchPath(directory.get())
     os.system("git commit -m \"" + sessionDescription.get() + "\"")
     os.system("git branch -M main")
     os.system("git remote add origin " + remoteOrigin.get())
     os.system("git push -u origin main")
 
-    #Upload stuff to Slack
-    threads = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
-    threads.click()
-    wait = WebDriverWait(driver, 10)
-    actions = ActionChains(driver)
-    reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
-    reply = driver.find_element_by_css_selector("[data-qa=\"message_input\"]")
-    actions.click(on_element=reply)
-    actions.send_keys(gitLink.get() + "\n").perform()
-    sendbutton = driver.find_element_by_css_selector("[data-qa='texty_send_button']")
-    sendbutton.click()
+    if (addToSlack.get()):
+        #Find link to commit
+        gitLink = ""
+        driver.get("https://www.github.com")
+        #Upload stuff to Slack
+        threads = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
+        threads.click()
+        wait = WebDriverWait(driver, 10)
+        actions = ActionChains(driver)
+        reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
+        reply = driver.find_element_by_css_selector("[data-qa=\"message_input\"]")
+        actions.click(on_element=reply)
+        actions.send_keys(gitLink + "\n").perform()
+        sendbutton = driver.find_element_by_css_selector("[data-qa='texty_send_button']")
+        sendbutton.click()
     drawStartSession()
     
 def searchPath(pathname):
     if "/." in pathname:
         return
-    for file in os.listdir(path=pathname):
-        if os.path.isfile(file):
-            if os.path.getsize(file) < 100000000:
-                os.system(f"git add " + os.path.realpath(file))
+    try:
+        for file in os.listdir(path=pathname):
+            if os.path.isfile(file):
+                if os.path.getsize(file) < 100000000:
+                    os.system(f"git add " + os.path.realpath(file))
+                else:
+                    playSound('fileTooLarge.mp3')
+                    messagebox.showerror("File " + os.path.realpath(file) + " is larger than GitHub's 100MB file limit. Please shrink file or upload manually.")
             else:
-                playSound('fileTooLarge.mp3')
-                messagebox.showerror("File " + os.path.realpath(file) + " is larger than GitHub's 100MB file limit. Please shrink file or upload manually.")
-        else:
-            searchPath(os.path.realpath(file))
+                searchPath(os.path.realpath(file))
+    except:
+        os.system(f"git add " + os.path.realpath(file))
 
 def playSound(sound):
     pygame.mixer.music.load(os.getcwd() + "/" + sound)
