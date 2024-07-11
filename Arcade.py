@@ -136,13 +136,13 @@ def endSession():
         signinbutton.click()
         time.sleep(1.5)
         repo = driver.find_element_by_link_text(remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))
-        actions.click(repo)
+        repo.click()
         time.sleep(2)
         commitButton = driver.find_element_by_xpath("/html/body/div[1]/div[5]/div/main/turbo-frame/div/div/div/div[2]/div[1]/react-partial/div/div/div[3]/div[1]/table/tbody/tr[1]/td/div/div[2]/div[2]/a")
-        actions.click(commitButton)
+        commitButton.click()
         time.sleep(0.5)
         commit = driver.find_element_by_xpath("/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")
-        actions.click(commit)
+        commit.click()
         gitLink = driver.current_url
 
         #Upload stuff to Slack
