@@ -132,7 +132,7 @@ def endSession():
         username.send_keys(gitUsername.get())
         password = driver.find_element_by_xpath('//*[@id="password"]')
         password.send_keys(gitPassword.get())
-        signinbutton = driver.find_element_by_xpath('/html/body/div[1]/div[3]/main/div/div[4]/form/div/input[13]')
+        signinbutton = driver.find_element_by_link_text("Sign In")
         actions.click(signinbutton)
         time.sleep(1.5)
         repo = driver.find_element_by_link_text(remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))
