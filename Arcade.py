@@ -28,7 +28,7 @@ arcadeLink ="https://hackclub.slack.com/archives/C06SBHMQU8G"
 username = StringVar(tk)
 gitUsername = StringVar(tk)
 gitPassword = StringVar(tk)
-secondsRemaining = 10
+secondsRemaining = 3600
 driver = webdriver.Firefox(executable_path=os.path.realpath("geckodriver"))#, options=options)
 loggedIn = False
 addToSlack = BooleanVar(tk)
@@ -64,7 +64,7 @@ def drawTimer():
     global loggedIn
     for widget in frame.winfo_children():
         widget.destroy()
-    secondsRemaining = 10
+    secondsRemaining = 3600
     if (addToSlack.get()):
         if (not loggedIn):
             #open arcade
