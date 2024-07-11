@@ -144,6 +144,7 @@ def endSession():
         commit = driver.find_element_by_xpath("/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")
         commit.click()
         gitLink = driver.current_url
+        driver.switch_to.window(driver.window_handles[0]) 
 
         #Upload stuff to Slack
         threads = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
