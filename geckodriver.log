@@ -1252,3 +1252,25 @@ JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb
 JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
 1720663114605	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
 JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.25ad7ae079ce3b1240c4.min.js?cacheKey=gantry-1720658250, line 188: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.d2099f60eae25663615d.min.js?cacheKey=gantry-1720658250, line 114: Script terminated by timeout at:
+919781/o/<@https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.d2099f60eae25663615d.min.js?cacheKey=gantry-1720658250:114:54803
+o@https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.d2099f60eae25663615d.min.js?cacheKey=gantry-1720658250:114:54789
+656453/createBeaconURLs/Ce<@https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.d2099f60eae25663615d.min.js?cacheKey=gantry-1720658250:111:40163
+createBeaconURLs@https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.d2099f60eae25663615d.min.js?cacheKey=gantry-1720658250:111:40295
+656453/sendDataAndEmptyQueue/<@https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.d2099f60eae25663615d.min.js?cacheKey=gantry-1720658250:111:43892
+sendDataAndEmptyQueue@https://a.slack-edge.com/bv1-13-br/gantry-v2-shared.d2099f60eae25663615d.min.js?cacheKey=gantry-1720658250:111:43867
+
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.25ad7ae079ce3b1240c4.min.js?cacheKey=gantry-1720658250, line 188: unreachable code after return statement
+1720663260714	geckodriver	INFO	Listening on 127.0.0.1:50758
+1720663261728	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofileI0Rovb"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720663262115	Marionette	INFO	Marionette enabled
+1720663262383	Marionette	INFO	Listening on port 50770
+1720663262485	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1720663292926	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+1720663415935	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.25ad7ae079ce3b1240c4.min.js?cacheKey=gantry-1720658250, line 188: unreachable code after return statement

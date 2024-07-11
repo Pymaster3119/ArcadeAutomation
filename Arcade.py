@@ -124,8 +124,10 @@ def endSession():
     if (addToSlack.get()):
         #Find link to commit
         actions = ActionChains(driver)
-        actions.send_keys(Keys.COMMAND + "t")
+        driver.execute_script("window.open('');") 
+        driver.switch_to.window(driver.window_handles[1]) 
         driver.get("https://www.github.com")
+        time.sleep(0.2)
         signin = driver.find_element_by_xpath("/html/body/div[1]/div[1]/header/div/div[2]/div/div/div/a")
         actions.click(signin)
         time.sleep(0.2)
@@ -145,7 +147,6 @@ def endSession():
         commit = driver.find_element_by_xpath("/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")
         actions.click(commit)
         gitLink = driver.current_url
-        actions.send_keys(Keys.COMMAND + "w")
 
         #Upload stuff to Slack
         threads = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
