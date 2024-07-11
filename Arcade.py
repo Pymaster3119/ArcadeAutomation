@@ -10,6 +10,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.common.keys import Keys
 
 options = Options()
 options.add_argument('--headless')
@@ -122,13 +123,35 @@ def endSession():
 
     if (addToSlack.get()):
         #Find link to commit
-        gitLink = ""
+        actions = ActionChains(driver)
+        actions.send_keys(Keys.COMMAND + "t")
         driver.get("https://www.github.com")
+        signin = driver.find_element_by_xpath("/html/body/div[1]/div[1]/header/div/div[2]/div/div/div/a")
+        actions.click(signin)
+        time.sleep(0.2)
+        username = driver.find_element_by_xpath('//*[@id="login_field"]')
+        username.send_keys(gitUsername.get())
+        password = driver.find_element_by_xpath('//*[@id="password"]')
+        password.send_keys(gitPassword.get())
+        signinbutton = driver.find_element_by_xpath('/html/body/div[1]/div[3]/main/div/div[4]/form/div/input[13]')
+        actions.click(signinbutton)
+        time.sleep(1.5)
+        repo = driver.find_element_by_link_text(remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))
+        actions.click(repo)
+        time.sleep(2)
+        commitButton = driver.find_element_by_xpath("/html/body/div[1]/div[5]/div/main/turbo-frame/div/div/div/div[2]/div[1]/react-partial/div/div/div[3]/div[1]/table/tbody/tr[1]/td/div/div[2]/div[2]/a")
+        actions.click(commitButton)
+        time.sleep(0.5)
+        commit = driver.find_element_by_xpath("/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")
+        actions.click(commit)
+        gitLink = driver.current_url
+        actions.send_keys(Keys.COMMAND + "w")
+
         #Upload stuff to Slack
         threads = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
         threads.click()
         wait = WebDriverWait(driver, 10)
-        actions = ActionChains(driver)
+       
         reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
         reply = driver.find_element_by_css_selector("[data-qa=\"message_input\"]")
         actions.click(on_element=reply)
