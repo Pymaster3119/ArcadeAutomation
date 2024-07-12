@@ -1435,3 +1435,16 @@ JavaScript error: chrome://remote/content/marionette/cert.sys.mjs, line 47: NS_E
 1720666351372	Marionette	INFO	Stopped listening on port 52404
 console.error: "Failed to fetch https://spocs.getpocket.com/user:" "NetworkError when attempting to fetch resource."
 console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+1720750512767	geckodriver	INFO	Listening on 127.0.0.1:60399
+1720750513632	mozrunner::runner	INFO	Running command: MOZ_CRASHREPORTER="1" MOZ_CRASHREPORTER_NO_REPORT="1" MOZ_CRASHREPORTER_SHUTDOWN="1" MOZ_NO_REMOTE="1" "/App ... "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/vg/_kg2628d3zj1nsyrlv860nbm0000gn/T/rust_mozprofilell6YiB"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1720750518271	Marionette	INFO	Marionette enabled
+1720750518775	Marionette	INFO	Listening on port 60410
+1720750518867	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1720750548908	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/primer-vendor.1984ab3edcb04372f5f7.primer.min.js, line 98: unreachable code after return statement
+1720750756061	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://a.slack-edge.com/bv1-13-br/gantry-v2-vendors.a0a263062543817994d1.min.js?cacheKey=gantry-1720741649, line 188: unreachable code after return statement
