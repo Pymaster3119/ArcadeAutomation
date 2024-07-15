@@ -110,6 +110,7 @@ def updateTimer():
         endSession()
 
 def endSession():
+    global loggedIn
     #Git commit
     os.system("cd " + directory.get())
     os.system("git init")
