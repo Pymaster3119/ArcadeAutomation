@@ -139,7 +139,7 @@ def endSession():
             verification = driver.find_element(By.XPATH, '//*[@id="otp"]')
             verification.send_keys(verify)
             driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/main/div/div[3]/div[2]/div[2]/form/button").click()
-            time.sleep(1.5)
+            time.sleep(5)
             repo = driver.find_element(By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))
             repo.click()
             loggedIn = True
