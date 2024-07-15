@@ -64,7 +64,7 @@ def drawTimer():
     global loggedIn, secondsRemaining
     for widget in frame.winfo_children():
         widget.destroy()
-    secondsRemaining = 3600
+    secondsRemaining = 10
     if (addToSlack.get()):
         if (not loggedIn):
             #open arcade
@@ -84,7 +84,6 @@ def drawTimer():
             wait = WebDriverWait(driver, 60)
             redirect = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[2]/p/a[2]")))
             redirect.click()
-            loggedIn = True
         else:
             arcadebutton = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[5]/div/span[1]/span")
             ActionChains().click(arcadebutton)
@@ -123,20 +122,27 @@ def endSession():
 
     if (addToSlack.get()):
         #Find link to commit
-        actions = ActionChains(driver)
-        driver.execute_script("window.open('');") 
+        if not loggedIn:
+            actions = ActionChains(driver)
+            driver.execute_script("window.open('');") 
+            driver.switch_to.window(driver.window_handles[1]) 
+            driver.get("https://www.github.com/login")
+            time.sleep(0.2)
+            username = driver.find_element(By.XPATH, '//*[@id="login_field"]')
+            username.send_keys(gitUsername.get())
+            password = driver.find_element(By.XPATH, '//*[@id="password"]')
+            password.send_keys(gitPassword.get())
+            signinbutton = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/main/div/div[4]/form/div/input[13]')
+            signinbutton.click()
+            verify = input("Enter your verification code from GitHub: ")
+            input = driver.find_element(By.XPATH, '//*[@id="otp"]')
+            input.send_keys(verify)
+            driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/main/div/div[3]/div[2]/div[2]/form/button").click()
+            time.sleep(1.5)
+            repo = driver.find_element(By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))
+            repo.click()
+            loggedIn = True
         driver.switch_to.window(driver.window_handles[1]) 
-        driver.get("https://www.github.com/login")
-        time.sleep(0.2)
-        username = driver.find_element(By.XPATH, '//*[@id="login_field"]')
-        username.send_keys(gitUsername.get())
-        password = driver.find_element(By.XPATH, '//*[@id="password"]')
-        password.send_keys(gitPassword.get())
-        signinbutton = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/main/div/div[4]/form/div/input[13]')
-        signinbutton.click()
-        time.sleep(1.5)
-        repo = driver.find_element(By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))
-        repo.click()
         time.sleep(2)
         commitButton = driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/div/div/div[2]/div[1]/react-partial/div/div/div[3]/div[1]/table/tbody/tr[1]/td/div/div[2]/div[2]/a")
         commitButton.click()
