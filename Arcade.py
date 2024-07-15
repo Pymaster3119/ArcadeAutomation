@@ -5,6 +5,7 @@ import os
 import pygame
 import time
 from selenium import webdriver
+from selenium.webdriver.firefox.service import Service;
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
@@ -29,11 +30,10 @@ username = StringVar(tk)
 gitUsername = StringVar(tk)
 gitPassword = StringVar(tk)
 secondsRemaining = 3600
-driver = webdriver.Firefox(executable_path=os.path.realpath("geckodriver"))#, options=options)
+service = Service(executable_path=os.path.realpath("geckodriver"))
+driver = webdriver.Firefox(service=service, options=options)
 loggedIn = False
 addToSlack = BooleanVar(tk)
-
-
 
 
 #Main Menu
@@ -61,7 +61,7 @@ def drawStartSession():
     Button(frame, text= "Start Session!", command=drawTimer).grid(row = 8, column= 0, columnspan = 2, sticky = W+E)
 
 def drawTimer():
-    global loggedIn
+    global loggedIn, secondsRemaining
     for widget in frame.winfo_children():
         widget.destroy()
     secondsRemaining = 3600
@@ -72,12 +72,12 @@ def drawTimer():
             time.sleep(0.1)
 
             #signin using email authentication
-            usernamebox = driver.find_element_by_id("signup_email")
+            usernamebox = driver.find_element(By.ID, "signup_email")
             usernamebox.send_keys(username.get())
-            submitbutton = driver.find_element_by_id("submit_btn")
+            submitbutton = driver.find_element(By.ID, "submit_btn")
             submitbutton.click()
             code = input("What is your login code? (no dash)")
-            codeEntry = driver.find_element_by_xpath("/html/body/div[1]/div[1]/form/div/fieldset/div/div[1]/div[1]/input")
+            codeEntry = driver.find_element(By.XPATH,"/html/body/div[1]/div[1]/form/div/fieldset/div/div[1]/div[1]/input")
             codeEntry.send_keys(code)
 
             #Redirections
@@ -86,14 +86,14 @@ def drawTimer():
             redirect.click()
             loggedIn = True
         else:
-            arcadebutton = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[5]/div/span[1]/span")
+            arcadebutton = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[5]/div/span[1]/span")
             ActionChains().click(arcadebutton)
         
         messagebox = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div[1]")))
 
         #Send the message
         messagebox.send_keys("/arcade " + sessionDescription.get() + "\n")
-        sendbutton = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[3]/div[3]/span/button[1]")
+        sendbutton = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[3]/div[3]/span/button[1]")
         sendbutton.click()
 
     Label(frame, textvariable=timeRemaining).grid(row=0,column=0)
@@ -128,35 +128,35 @@ def endSession():
         driver.switch_to.window(driver.window_handles[1]) 
         driver.get("https://www.github.com/login")
         time.sleep(0.2)
-        username = driver.find_element_by_xpath('//*[@id="login_field"]')
+        username = driver.find_element(By.XPATH, '//*[@id="login_field"]')
         username.send_keys(gitUsername.get())
-        password = driver.find_element_by_xpath('//*[@id="password"]')
+        password = driver.find_element(By.XPATH, '//*[@id="password"]')
         password.send_keys(gitPassword.get())
-        signinbutton = driver.find_element_by_xpath('/html/body/div[1]/div[3]/main/div/div[4]/form/div/input[13]')
+        signinbutton = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/main/div/div[4]/form/div/input[13]')
         signinbutton.click()
         time.sleep(1.5)
-        repo = driver.find_element_by_link_text(remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))
+        repo = driver.find_element(By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))
         repo.click()
         time.sleep(2)
-        commitButton = driver.find_element_by_xpath("/html/body/div[1]/div[5]/div/main/turbo-frame/div/div/div/div[2]/div[1]/react-partial/div/div/div[3]/div[1]/table/tbody/tr[1]/td/div/div[2]/div[2]/a")
+        commitButton = driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/div/div/div[2]/div[1]/react-partial/div/div/div[3]/div[1]/table/tbody/tr[1]/td/div/div[2]/div[2]/a")
         commitButton.click()
         time.sleep(0.5)
-        commit = driver.find_element_by_xpath("/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")
+        commit = driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")
         commit.click()
         time.sleep(0.5)
         gitLink = driver.current_url
         driver.switch_to.window(driver.window_handles[0]) 
 
         #Upload stuff to Slack
-        threads = driver.find_element_by_xpath("/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
+        threads = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
         threads.click()
         wait = WebDriverWait(driver, 10)
        
         reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
-        reply = driver.find_element_by_css_selector("[data-qa=\"message_input\"]")
+        reply = driver.find_element(By.CSS_SELECTOR, "[data-qa=\"message_input\"]")
         actions.click(on_element=reply)
         actions.send_keys(gitLink + "\n").perform()
-        sendbutton = driver.find_element_by_css_selector("[data-qa='texty_send_button']")
+        sendbutton = driver.find_element(By.CSS_SELECTOR,"[data-qa='texty_send_button']")
         sendbutton.click()
     drawStartSession()
     
