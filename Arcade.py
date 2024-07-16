@@ -179,8 +179,7 @@ def endSession():
 
         #Reset to the arcade
         time.sleep(1)
-        print(driver.find_element(By.LINK_TEXT, "arcade"))
-        actions.click(on_element=driver.find_element(By.LINK_TEXT, "arcade"))
+        driver.get(driver.current_url + "/C06SBHMQU8G")
 
     drawStartSession()
     
