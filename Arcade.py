@@ -164,11 +164,11 @@ def endSession():
         time.sleep(3)
         gitLink = driver.current_url
         driver.switch_to.window(driver.window_handles[0]) 
-
+        time.sleep(1)
         #Upload stuff to Slack
         threads = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
         threads.click()
-        wait = WebDriverWait(driver, 10)
+        wait = WebDriverWait(driver, 60)
        
         reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
         reply = driver.find_element(By.CSS_SELECTOR, "[data-qa=\"message_input\"]")
