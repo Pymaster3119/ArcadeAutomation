@@ -155,10 +155,10 @@ def endSession():
         time.sleep(2)
         commitButton = driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/div/div/div[2]/div[1]/react-partial/div/div/div[3]/div[1]/table/tbody/tr[1]/td/div/div[2]/div[2]/a")
         commitButton.click()
-        time.sleep(0.5)
+        time.sleep(3)
         commit = driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")
         commit.click()
-        time.sleep(0.5)
+        time.sleep(3)
         gitLink = driver.current_url
         driver.switch_to.window(driver.window_handles[0]) 
 
