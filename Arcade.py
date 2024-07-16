@@ -105,7 +105,7 @@ def updateTimer():
     timeRemaining.set(f"{minutes}:{seconds} remaining! You got this!")
     secondsRemaining -= 1
     if (secondsRemaining != 0):
-        tk.after(1250, updateTimer)
+        tk.after(1100, updateTimer)
     else:
         endSession()
 
@@ -113,6 +113,8 @@ def endSession():
     global loggedIn
     #Git commit
     os.system("cd \"" + directory.get() + "\"")
+    currdir = os.getcwd()
+    os.chdir(directory.get())
     print("init")
     os.system("git init")
     os.system("git add --all")
@@ -125,6 +127,7 @@ def endSession():
     os.system("git remote add origin " + remoteOrigin.get())
     print("push")
     os.system("git push -u origin main")
+    os.chdir(currdir)
 
     if (addToSlack.get()):
         #Find link to commit
@@ -173,6 +176,11 @@ def endSession():
         actions.send_keys(gitLink + "\n").perform()
         sendbutton = driver.find_element(By.CSS_SELECTOR,"[data-qa='texty_send_button']")
         sendbutton.click()
+
+        #Reset to the arcade
+        wait(1)
+        actions.click(on_element=driver.find_element(By.LINK_TEXT, "arcade"))
+
     drawStartSession()
     
 def searchPath(pathname):
