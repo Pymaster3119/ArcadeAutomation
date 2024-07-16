@@ -135,10 +135,13 @@ def endSession():
             password.send_keys(gitPassword.get())
             signinbutton = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/main/div/div[4]/form/div/input[13]')
             signinbutton.click()
-            verify = input("Enter your verification code from GitHub: ")
-            verification = driver.find_element(By.XPATH, '//*[@id="otp"]')
-            verification.send_keys(verify)
-            driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/main/div/div[3]/div[2]/div[2]/form/button").click()
+            try:
+                verify = input("Enter your verification code from GitHub: ")
+                verification = driver.find_element(By.XPATH, '//*[@id="otp"]')
+                verification.send_keys(verify)
+                driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/main/div/div[3]/div[2]/div[2]/form/button").click()
+            except:
+                print("No verification detected")
             time.sleep(5)
             repo = driver.find_element(By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))
             repo.click()
