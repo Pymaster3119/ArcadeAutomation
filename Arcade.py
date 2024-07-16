@@ -64,7 +64,7 @@ def drawTimer():
     global loggedIn, secondsRemaining
     for widget in frame.winfo_children():
         widget.destroy()
-    secondsRemaining = 10
+    secondsRemaining = 1800
     if (addToSlack.get()):
         if (not loggedIn):
             #open arcade
