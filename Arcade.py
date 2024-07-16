@@ -178,7 +178,7 @@ def endSession():
         sendbutton.click()
 
         #Reset to the arcade
-        wait(1)
+        time.sleep(1)
         actions.click(on_element=driver.find_element(By.LINK_TEXT, "arcade"))
 
     drawStartSession()
