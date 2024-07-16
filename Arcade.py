@@ -119,7 +119,7 @@ def endSession():
     os.system("git commit -m \"" + sessionDescription.get() + "\"")
     os.system("git branch -M main")
     os.system("git remote add origin " + remoteOrigin.get())
-    print(push)
+    print("push")
     os.system("git push -u origin main")
 
     if (addToSlack.get()):
