@@ -64,7 +64,7 @@ def drawTimer():
     global loggedIn, secondsRemaining
     for widget in frame.winfo_children():
         widget.destroy()
-    secondsRemaining = 3600
+    secondsRemaining = 10
     if (addToSlack.get()):
         if (not loggedIn):
             #open arcade
@@ -103,7 +103,7 @@ def updateTimer():
     timeRemaining.set(f"{minutes}:{seconds} remaining! You got this!")
     secondsRemaining -= 1
     if (secondsRemaining != 0):
-        tk.after(1100, updateTimer)
+        tk.after(1000, updateTimer)
     else:
         endSession()
 
@@ -162,9 +162,9 @@ def endSession():
         time.sleep(3)
         gitLink = driver.current_url
         driver.switch_to.window(driver.window_handles[0]) 
-        time.sleep(1)
+        time.sleep(5)
         #Upload stuff to Slack
-        threads = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
+        threads = driver.find_element(By.CLASS_NAME, "p-channel_sidebar__link p-channel_sidebar__link--all-threads p-channel_sidebar__link--unread")
         threads.click()
         wait = WebDriverWait(driver, 60)
        
