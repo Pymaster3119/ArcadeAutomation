@@ -56,7 +56,7 @@ def drawStartSession():
     Label(frame, text= "Enter your gitHub username: ").grid(row=5, column=0)
     Entry(frame, textvariable=gitUsername).grid(row = 5, column= 1)
     Label(frame, text= "Enter your gitHub password: ").grid(row=6, column=0)
-    Entry(frame, textvariable=gitPassword).grid(row = 6, column= 1)
+    Entry(frame, textvariable=gitPassword, show="*").grid(row = 6, column= 1)
     Checkbutton(frame, text= "Upload to slack", variable=addToSlack).grid(row = 7, column= 0)
     Button(frame, text= "Start Session!", command=drawTimer).grid(row = 8, column= 0, columnspan = 2, sticky = W+E)
 
