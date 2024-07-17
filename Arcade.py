@@ -148,12 +148,13 @@ def endSession():
                 driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/main/div/div[3]/div[2]/div[2]/form/button").click()
             except:
                 print("No verification detected")
-            WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))))
-            repo = driver.find_element(By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))
-            repo.click()
+            
             loggedIn = True
+        driver.get("https://github.com/")
+        WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))))
+        repo = driver.find_element(By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))
+        repo.click()
         driver.switch_to.window(driver.window_handles[1])
-        driver.get("https://www.github.com/")
         WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/div/div/div[2]/div[1]/react-partial/div/div/div[3]/div[1]/table/tbody/tr[1]/td/div/div[2]/div[2]/a")))
         commitButton = driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/div/div/div[2]/div[1]/react-partial/div/div/div[3]/div[1]/table/tbody/tr[1]/td/div/div[2]/div[2]/a")
         commitButton.click()
