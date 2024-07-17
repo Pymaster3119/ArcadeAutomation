@@ -31,7 +31,7 @@ gitUsername = StringVar(tk)
 gitPassword = StringVar(tk)
 secondsRemaining = 3600
 service = Service(executable_path=os.path.realpath("geckodriver"))
-driver = webdriver.Firefox(service=service)#options=options)
+driver = webdriver.Firefox(service=service, options=options)
 loggedIn = False
 addToSlack = BooleanVar(tk)
 
