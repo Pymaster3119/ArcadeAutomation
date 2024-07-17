@@ -64,7 +64,7 @@ def drawTimer():
     global loggedIn, secondsRemaining
     for widget in frame.winfo_children():
         widget.destroy()
-    secondsRemaining = 1800
+    secondsRemaining = 3600
     if (addToSlack.get()):
         if (not loggedIn):
             #open arcade
@@ -84,9 +84,7 @@ def drawTimer():
             wait = WebDriverWait(driver, 60)
             redirect = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[2]/p/a[2]")))
             redirect.click()
-        else:
-            arcadebutton = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[5]/div/span[1]/span")
-            ActionChains().click(arcadebutton)
+        time.sleep(2)
         
         messagebox = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div[1]")))
 
