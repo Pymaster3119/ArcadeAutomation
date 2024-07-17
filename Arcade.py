@@ -134,7 +134,7 @@ def endSession():
             driver.execute_script("window.open('');") 
             driver.switch_to.window(driver.window_handles[1]) 
             driver.get("https://www.github.com/login")
-            time.sleep(0.2)
+            WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located(By.XPATH, '//*[@id="login_field"]'))
             username = driver.find_element(By.XPATH, '//*[@id="login_field"]')
             username.send_keys(gitUsername.get())
             password = driver.find_element(By.XPATH, '//*[@id="password"]')
