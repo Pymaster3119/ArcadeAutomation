@@ -31,7 +31,7 @@ gitUsername = StringVar(tk)
 gitPassword = StringVar(tk)
 secondsRemaining = 3600
 service = Service(executable_path=os.path.realpath("geckodriver"))
-driver = webdriver.Firefox(service=service)#, options=options)
+driver = webdriver.Firefox(service=service)#options=options)
 loggedIn = False
 addToSlack = BooleanVar(tk)
 
@@ -65,6 +65,7 @@ def drawTimer():
     for widget in frame.winfo_children():
         widget.destroy()
     secondsRemaining = 10
+    wait = WebDriverWait(driver, 60)
     if (addToSlack.get()):
         if (not loggedIn):
             #open arcade
@@ -81,7 +82,6 @@ def drawTimer():
             codeEntry.send_keys(code)
 
             #Redirections
-            wait = WebDriverWait(driver, 60)
             redirect = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[2]/p/a[2]")))
             redirect.click()
         
@@ -141,6 +141,7 @@ def endSession():
             signinbutton = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/main/div/div[4]/form/div/input[13]')
             signinbutton.click()
             try:
+                playSound("notification.mp3")
                 verify = input("Enter your verification code from GitHub: ")
                 verification = driver.find_element(By.XPATH, '//*[@id="otp"]')
                 verification.send_keys(verify)
