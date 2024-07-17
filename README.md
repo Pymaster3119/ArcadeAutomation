@@ -6,8 +6,7 @@ To commit, I use the command line and the following commands:\
     git commit -m "<user message>"\
     git branch -M main\
     git remote add origin <origin>\
-    git push -u origin main\
+    git push -u origin main
 
-Also, /. makes program ignore that path when running git add.\
 Make sure you have tkinter, pygame, selenium, and math libraries installed.\
 Keep the geckodriver excecutable in this folder.
