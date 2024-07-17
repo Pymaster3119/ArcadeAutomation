@@ -128,8 +128,9 @@ def endSession():
 
     if (addToSlack.get()):
         #Find link to commit
+        actions = ActionChains(driver)
         if not loggedIn:
-            actions = ActionChains(driver)
+            
             driver.execute_script("window.open('');") 
             driver.switch_to.window(driver.window_handles[1]) 
             driver.get("https://www.github.com/login")
