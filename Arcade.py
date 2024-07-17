@@ -164,7 +164,7 @@ def endSession():
         driver.switch_to.window(driver.window_handles[0]) 
         time.sleep(5)
         #Upload stuff to Slack
-        threads = driver.find_element(By.CLASS_NAME, "p-channel_sidebar__link p-channel_sidebar__link--all-threads p-channel_sidebar__link--unread")
+        threads = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
         threads.click()
         wait = WebDriverWait(driver, 60)
        
