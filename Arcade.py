@@ -34,6 +34,8 @@ service = Service(executable_path=os.path.realpath("geckodriver"))
 driver = webdriver.Firefox(service=service)#, options=options)
 loggedIn = False
 addToSlack = BooleanVar(tk)
+sessionLength = StringVar(tk)
+sessionLength.set("3600")
 
 
 #Main Menu
@@ -59,12 +61,18 @@ def drawStartSession():
     Entry(frame, textvariable=gitPassword, show="*").grid(row = 6, column= 1)
     Checkbutton(frame, text= "Upload to slack", variable=addToSlack).grid(row = 7, column= 0)
     Button(frame, text= "Start Session!", command=drawTimer).grid(row = 8, column= 0, columnspan = 2, sticky = W+E)
+    Label(frame, text="Custom Session Length: ").grid(row=9, column=0)
+    Entry(frame, textvariable=sessionLength).grid(row=9, column=1)
 
 def drawTimer():
     global loggedIn, secondsRemaining
     for widget in frame.winfo_children():
         widget.destroy()
-    secondsRemaining = 3600
+    try:
+        secondsRemaining = int(sessionLength.get())
+    except Exception:
+        playSound("fileTooLarge.mp3")
+        drawStartSession()
     wait = WebDriverWait(driver, 60)
     if (addToSlack.get()):
         if (not loggedIn):
