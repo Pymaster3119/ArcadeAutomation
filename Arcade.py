@@ -101,6 +101,7 @@ def drawTimer():
         sendbutton.click()
 
     Label(frame, textvariable=timeRemaining).grid(row=0,column=0)
+    Button(frame, text="Emergency commit", command=commit).grid(row=1, column=0)
     updateTimer()
 
 def updateTimer():
@@ -114,8 +115,7 @@ def updateTimer():
     else:
         endSession()
 
-def endSession():
-    global loggedIn
+def commit():
     #Git commit
     os.system("cd \"" + directory.get() + "\"")
     currdir = os.getcwd()
@@ -133,6 +133,10 @@ def endSession():
     print("push")
     os.system("git push -u origin main")
     os.chdir(currdir)
+
+def endSession():
+    global loggedIn
+    commit()
 
     if (addToSlack.get()):
         #Find link to commit
@@ -192,7 +196,7 @@ def endSession():
         sendbutton.click()
 
         #Reset to the arcade
-        time.sleep(0.1)
+        time.sleep(1)
         driver.get(driver.current_url + "/C06SBHMQU8G")
 
     drawStartSession()
