@@ -75,30 +75,38 @@ def drawTimer():
         drawStartSession()
     wait = WebDriverWait(driver, 60)
     if (addToSlack.get()):
-        if (not loggedIn):
-            #open arcade
-            driver.get(arcadeLink)
-            WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.ID, "signup_email")))
+        try:
+            if (not loggedIn):
+                #open arcade
+                driver.get(arcadeLink)
+                WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.ID, "signup_email")))
 
-            #signin using email authentication
-            usernamebox = driver.find_element(By.ID, "signup_email")
-            usernamebox.send_keys(username.get())
-            submitbutton = driver.find_element(By.ID, "submit_btn")
-            submitbutton.click()
-            code = input("What is your login code? (no dash)")
-            codeEntry = driver.find_element(By.XPATH,"/html/body/div[1]/div[1]/form/div/fieldset/div/div[1]/div[1]/input")
-            codeEntry.send_keys(code)
+                #signin using email authentication
+                usernamebox = driver.find_element(By.ID, "signup_email")
+                usernamebox.send_keys(username.get())
+                submitbutton = driver.find_element(By.ID, "submit_btn")
+                submitbutton.click()
+                code = input("What is your login code? (no dash)")
+                codeEntry = driver.find_element(By.XPATH,"/html/body/div[1]/div[1]/form/div/fieldset/div/div[1]/div[1]/input")
+                codeEntry.send_keys(code)
 
-            #Redirections
-            redirect = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[2]/p/a[2]")))
-            redirect.click()
-        
-        messagebox = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div[1]")))
+                #Redirections
+                redirect = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[1]/div/div/div[2]/p/a[2]")))
+                redirect.click()
+            
+            messagebox = wait.until(expected_conditions.visibility_of_element_located((By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[2]/div/div[1]")))
 
-        #Send the message
-        messagebox.send_keys("/arcade " + sessionDescription.get() + "\n")
-        sendbutton = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[3]/div[3]/span/button[1]")
-        sendbutton.click()
+            #Send the message
+            messagebox.send_keys("/arcade " + sessionDescription.get() + "\n")
+            sendbutton = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[2]/div[2]/div/div[3]/div[2]/div/div/div[2]/div/div/div/div[3]/div[3]/span/button[1]")
+            sendbutton.click()
+        except:
+            playSound("fileTooLarge.mp3")
+            drawStartSession()
+    else:
+        if not loggedIn:
+            driver.quit()
+            loggedIn = True
 
     Label(frame, textvariable=timeRemaining).grid(row=0,column=0)
     Button(frame, text="Emergency commit", command=commit).grid(row=1, column=0)
@@ -135,87 +143,92 @@ def commit():
     os.chdir(currdir)
 
 def endSession():
-    global loggedIn
-    commit()
+    global loggedIn, commit
+    #Git commit
+    os.system("cd \"" + directory.get() + "\"")
+    currdir = os.getcwd()
+    os.chdir(directory.get())
+    print("init")
+    os.system("git init")
+    os.system("git add --all")
+    #searchPath(directory.get())
+    print("commit")
+    os.system("git commit -m \"" + sessionDescription.get() + "\"")
+    print("branch")
+    os.system("git branch -M main")
+    print("origin")
+    os.system("git remote add origin " + remoteOrigin.get())
+    print("push")
+    os.system("git push -u origin main")
+    os.chdir(currdir)
 
     if (addToSlack.get()):
-        #Find link to commit
-        actions = ActionChains(driver)
-        if not loggedIn:
+        try:
+            #Find link to commit
+            actions = ActionChains(driver)
+            if not loggedIn:
+                
+                driver.execute_script("window.open('');") 
+                driver.switch_to.window(driver.window_handles[1]) 
+                driver.get("https://www.github.com/login")
+                WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.XPATH, '//*[@id="login_field"]')))
+                username = driver.find_element(By.XPATH, '//*[@id="login_field"]')
+                username.send_keys(gitUsername.get())
+                password = driver.find_element(By.XPATH, '//*[@id="password"]')
+                password.send_keys(gitPassword.get())
+                signinbutton = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/main/div/div[4]/form/div/input[13]')
+                signinbutton.click()
+                try:
+                    playSound("notification.mp3")
+                    verify = input("Enter your verification code from GitHub: ")
+                    verification = driver.find_element(By.XPATH, '//*[@id="otp"]')
+                    verification.send_keys(verify)
+                    driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/main/div/div[3]/div[2]/div[2]/form/button").click()
+                except:
+                    print("No verification detected")
+                
+                loggedIn = True
             
-            driver.execute_script("window.open('');") 
-            driver.switch_to.window(driver.window_handles[1]) 
-            driver.get("https://www.github.com/login")
-            WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.XPATH, '//*[@id="login_field"]')))
-            username = driver.find_element(By.XPATH, '//*[@id="login_field"]')
-            username.send_keys(gitUsername.get())
-            password = driver.find_element(By.XPATH, '//*[@id="password"]')
-            password.send_keys(gitPassword.get())
-            signinbutton = driver.find_element(By.XPATH, '/html/body/div[1]/div[3]/main/div/div[4]/form/div/input[13]')
-            signinbutton.click()
-            try:
-                playSound("notification.mp3")
-                verify = input("Enter your verification code from GitHub: ")
-                verification = driver.find_element(By.XPATH, '//*[@id="otp"]')
-                verification.send_keys(verify)
-                driver.find_element(By.XPATH, "/html/body/div[1]/div[3]/main/div/div[3]/div[2]/div[2]/form/button").click()
-            except:
-                print("No verification detected")
-            
-            loggedIn = True
-        
-        driver.switch_to.window(driver.window_handles[1])
-        driver.get("https://github.com/")
-        WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))))
-        repo = driver.find_element(By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))
-        repo.click()
-        WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/div/div/div[2]/div[1]/react-partial/div/div/div[3]/div[1]/table/tbody/tr[1]/td/div/div[2]/div[2]/a")))
-        commitButton = driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/div/div/div[2]/div[1]/react-partial/div/div/div[3]/div[1]/table/tbody/tr[1]/td/div/div[2]/div[2]/a")
-        commitButton.click()
-        WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")))
-        commit = driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")
-        commit.click()
-        time.sleep(1)
-        gitLink = driver.current_url
-        driver.switch_to.window(driver.window_handles[0]) 
-        #Upload stuff to Slack
-        WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")))
-        threads = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
-        threads.click()
+            driver.switch_to.window(driver.window_handles[1])
+            driver.get("https://github.com/")
+            WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))))
+            repo = driver.find_element(By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))
+            repo.click()
+            WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/div/div/div[2]/div[1]/react-partial/div/div/div[3]/div[1]/table/tbody/tr[1]/td/div/div[2]/div[2]/a")))
+            commitButton = driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/div/div/div[2]/div[1]/react-partial/div/div/div[3]/div[1]/table/tbody/tr[1]/td/div/div[2]/div[2]/a")
+            commitButton.click()
+            WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")))
+            commit = driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")
+            commit.click()
+            time.sleep(1)
+            gitLink = driver.current_url
+            driver.switch_to.window(driver.window_handles[0]) 
+            #Upload stuff to Slack
+            WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")))
+            threads = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
+            threads.click()
 
-        wait = WebDriverWait(driver, 60)
-        reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
-        reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
-        reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
-        reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
-        reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
-        reply = driver.find_element(By.CSS_SELECTOR, "[data-qa=\"message_input\"]")
-        actions.click(on_element=reply)
-        actions.send_keys(gitLink + "\n").perform()
-        sendbutton = driver.find_element(By.CSS_SELECTOR,"[data-qa='texty_send_button']")
-        sendbutton.click()
+            wait = WebDriverWait(driver, 60)
+            reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
+            reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
+            reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
+            reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
+            reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
+            reply = driver.find_element(By.CSS_SELECTOR, "[data-qa=\"message_input\"]")
+            actions.click(on_element=reply)
+            actions.send_keys(gitLink + "\n").perform()
+            sendbutton = driver.find_element(By.CSS_SELECTOR,"[data-qa='texty_send_button']")
+            sendbutton.click()
 
-        #Reset to the arcade
-        time.sleep(1)
-        driver.get(driver.current_url + "/C06SBHMQU8G")
+            #Reset to the arcade
+            time.sleep(1)
+            driver.get(driver.current_url + "/C06SBHMQU8G")
+        except:
+            playSound("fileTooLarge.mp3")
+            drawStartSession()
 
     drawStartSession()
     
-def searchPath(pathname):
-    if "/." in pathname:
-        return
-    try:
-        for file in os.listdir(path=pathname):
-            if os.path.isfile(file):
-                if os.path.getsize(file) < 100000000:
-                    os.system(f"git add " + os.path.realpath(file))
-                else:
-                    playSound('fileTooLarge.mp3')
-                    messagebox.showerror("File " + os.path.realpath(file) + " is larger than GitHub's 100MB file limit. Please shrink file or upload manually.")
-            else:
-                searchPath(os.path.realpath(file))
-    except:
-        os.system(f"git add " + os.path.realpath(file))
 
 def playSound(sound):
     pygame.mixer.music.load(os.getcwd() + "/" + sound)
