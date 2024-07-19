@@ -31,7 +31,7 @@ gitUsername = StringVar(tk)
 gitPassword = StringVar(tk)
 secondsRemaining = 3600
 service = Service(executable_path=os.path.realpath("geckodriver"))
-driver = webdriver.Firefox(service=service, options=options)
+driver = webdriver.Firefox(service=service)#, options=options)
 loggedIn = False
 addToSlack = BooleanVar(tk)
 
@@ -64,7 +64,7 @@ def drawTimer():
     global loggedIn, secondsRemaining
     for widget in frame.winfo_children():
         widget.destroy()
-    secondsRemaining = 10
+    secondsRemaining = 3600
     wait = WebDriverWait(driver, 60)
     if (addToSlack.get()):
         if (not loggedIn):
@@ -172,6 +172,10 @@ def endSession():
         threads.click()
 
         wait = WebDriverWait(driver, 60)
+        reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
+        reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
+        reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
+        reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
         reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
         reply = driver.find_element(By.CSS_SELECTOR, "[data-qa=\"message_input\"]")
         actions.click(on_element=reply)
