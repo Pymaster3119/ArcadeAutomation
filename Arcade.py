@@ -31,7 +31,7 @@ gitUsername = StringVar(tk)
 gitPassword = StringVar(tk)
 secondsRemaining = 3600
 service = Service(executable_path=os.path.realpath("geckodriver"))
-driver = webdriver.Firefox(service=service)#, options=options)
+driver = webdriver.Firefox(service=service, options=options)
 loggedIn = False
 addToSlack = BooleanVar(tk)
 sessionLength = StringVar(tk)
@@ -72,7 +72,6 @@ def drawTimer():
         secondsRemaining = int(sessionLength.get())
     except Exception:
         playSound("fileTooLarge.mp3")
-        drawStartSession()
     wait = WebDriverWait(driver, 60)
     if (addToSlack.get()):
         try:
@@ -102,7 +101,6 @@ def drawTimer():
             sendbutton.click()
         except:
             playSound("fileTooLarge.mp3")
-            drawStartSession()
     else:
         if not loggedIn:
             driver.quit()
@@ -209,7 +207,6 @@ def endSession():
             driver.get(driver.current_url + "/C06SBHMQU8G")
         except:
             playSound("fileTooLarge.mp3")
-            drawStartSession()
 
     drawStartSession()
     
