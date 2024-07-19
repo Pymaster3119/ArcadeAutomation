@@ -144,23 +144,7 @@ def commit():
 
 def endSession():
     global loggedIn, commit
-    #Git commit
-    os.system("cd \"" + directory.get() + "\"")
-    currdir = os.getcwd()
-    os.chdir(directory.get())
-    print("init")
-    os.system("git init")
-    os.system("git add --all")
-    #searchPath(directory.get())
-    print("commit")
-    os.system("git commit -m \"" + sessionDescription.get() + "\"")
-    print("branch")
-    os.system("git branch -M main")
-    print("origin")
-    os.system("git remote add origin " + remoteOrigin.get())
-    print("push")
-    os.system("git push -u origin main")
-    os.chdir(currdir)
+    commit()
 
     if (addToSlack.get()):
         try:
