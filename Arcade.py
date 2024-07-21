@@ -175,6 +175,7 @@ def endSession():
                 loggedIn = True
             
             driver.switch_to.window(driver.window_handles[1])
+            print("https://github.com/" + gitUsername.get() + "/" + remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git") + "/commits/main")
             driver.get("https://github.com/" + gitUsername.get() + "/" + remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git") + "/commits/main")
             WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")))
             commit = driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")
