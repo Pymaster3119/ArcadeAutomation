@@ -175,13 +175,7 @@ def endSession():
                 loggedIn = True
             
             driver.switch_to.window(driver.window_handles[1])
-            driver.get("https://github.com/")
-            WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))))
-            repo = driver.find_element(By.LINK_TEXT, remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git"))
-            repo.click()
-            WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/div/div/div[2]/div[1]/react-partial/div/div/div[3]/div[1]/table/tbody/tr[1]/td/div/div[2]/div[2]/a")))
-            commitButton = driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/div/div/div[2]/div[1]/react-partial/div/div/div[3]/div[1]/table/tbody/tr[1]/td/div/div[2]/div[2]/div[2]/span/a/span")
-            commitButton.click()
+            driver.get("https://github.com/" + gitUsername.get() + "/" + remoteOrigin.get().removeprefix("https://github.com/").removesuffix(".git") + "/commits/main")
             WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")))
             commit = driver.find_element(By.XPATH, "/html/body/div[1]/div[5]/div/main/turbo-frame/div/react-app/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/ul/li[1]/div[1]/h4/span/a")
             commit.click()
