@@ -12,7 +12,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.keys import Keys
-
+from selenium.webdriver.common.actions.action_builder import ActionBuilder
 options = Options()
 options.add_argument('--headless')
 
@@ -184,13 +184,10 @@ def endSession():
             gitLink = driver.current_url
             driver.switch_to.window(driver.window_handles[0]) 
             #Upload stuff to Slack
-            WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.CLASS_NAME, "p-channel_sidebar__link p-channel_sidebar__link--all-threads p-channel_sidebar__link--unread")))
-            threads = None
-            try:
-                driver.find_element(By.CLASS_NAME, "p-channel_sidebar__link p-channel_sidebar__link--all-threads p-channel_sidebar__link--unread")
-            except:
-                driver.find_element(By.CLASS_NAME, "p-channel_sidebar__link p-channel_sidebar__link--all-threads")
-            threads.click()
+            actionbuilder = ActionBuilder(driver)
+            actionbuilder.pointer_action.move_to_location(64, 60)
+            actionbuilder.pointer_action.click()
+            actionbuilder.perform()
 
             wait = WebDriverWait(driver, 60)
             reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
