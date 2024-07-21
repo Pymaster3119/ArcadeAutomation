@@ -108,6 +108,8 @@ def drawTimer():
 
     Label(frame, textvariable=timeRemaining).grid(row=0,column=0)
     Button(frame, text="Emergency commit", command=commitfn).grid(row=1, column=0)
+    Label(frame, text="Commit Message: ").grid(row=2, column=0)
+    Entry(frame, textvariable=sessionDescription).grid(row=2, column=1)
     updateTimer()
 
 def updateTimer():
@@ -142,6 +144,7 @@ def commitfn():
 
 def endSession():
     global loggedIn
+    playSound("restartSession.mp3")
     commitfn()
 
     if (addToSlack.get()):
