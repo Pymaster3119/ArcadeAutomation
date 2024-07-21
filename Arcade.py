@@ -185,7 +185,7 @@ def endSession():
             driver.switch_to.window(driver.window_handles[0]) 
             #Upload stuff to Slack
             actionbuilder = ActionBuilder(driver)
-            actionbuilder.pointer_action.move_to_location(205, 226)
+            actionbuilder.pointer_action.move_to_location(205, 110)
             actionbuilder.pointer_action.click()
             actionbuilder.perform()
 
