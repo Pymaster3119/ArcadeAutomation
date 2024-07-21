@@ -36,7 +36,7 @@ loggedIn = False
 addToSlack = BooleanVar(tk)
 sessionLength = StringVar(tk)
 sessionLength.set("3600")
-
+driver.set_window_size(1000,1000)
 
 #Main Menu
 def drawMainMenu():
@@ -190,7 +190,11 @@ def endSession():
             driver.switch_to.window(driver.window_handles[0]) 
             #Upload stuff to Slack
             WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.CLASS_NAME, "p-channel_sidebar__link p-channel_sidebar__link--all-threads p-channel_sidebar__link--unread")))
-            threads = driver.find_element(By.CLASS_NAME, "p-channel_sidebar__link p-channel_sidebar__link--all-threads p-channel_sidebar__link--unread")
+            threads = None
+            try:
+                driver.find_element(By.CLASS_NAME, "p-channel_sidebar__link p-channel_sidebar__link--all-threads p-channel_sidebar__link--unread")
+            except:
+                driver.find_element(By.CLASS_NAME, "p-channel_sidebar__link p-channel_sidebar__link--all-threads")
             threads.click()
 
             wait = WebDriverWait(driver, 60)
