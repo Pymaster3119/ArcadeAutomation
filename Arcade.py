@@ -31,7 +31,7 @@ gitUsername = StringVar(tk)
 gitPassword = StringVar(tk)
 secondsRemaining = 3600
 service = Service(executable_path=os.path.realpath("geckodriver"))
-driver = webdriver.Firefox(service=service, options=options)
+driver = webdriver.Firefox(service=service)#, options=options)
 loggedIn = False
 addToSlack = BooleanVar(tk)
 sessionLength = StringVar(tk)
@@ -107,7 +107,7 @@ def drawTimer():
             loggedIn = True
 
     Label(frame, textvariable=timeRemaining).grid(row=0,column=0)
-    Button(frame, text="Emergency commit", command=commit).grid(row=1, column=0)
+    Button(frame, text="Emergency commit", command=commitfn).grid(row=1, column=0)
     updateTimer()
 
 def updateTimer():
@@ -121,7 +121,7 @@ def updateTimer():
     else:
         endSession()
 
-def commit():
+def commitfn():
     #Git commit
     os.system("cd \"" + directory.get() + "\"")
     currdir = os.getcwd()
@@ -141,8 +141,8 @@ def commit():
     os.chdir(currdir)
 
 def endSession():
-    global loggedIn, commit
-    commit()
+    global loggedIn
+    commitfn()
 
     if (addToSlack.get()):
         try:
@@ -186,8 +186,8 @@ def endSession():
             gitLink = driver.current_url
             driver.switch_to.window(driver.window_handles[0]) 
             #Upload stuff to Slack
-            WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")))
-            threads = driver.find_element(By.XPATH, "/html/body/div[2]/div/div/div[4]/div[2]/div[1]/div[1]/div[2]/div[1]/div/div/div[2]/div[2]/div[1]/div/div/div[1]/div/div/div[1]/div")
+            WebDriverWait(driver, 60).until(expected_conditions.visibility_of_any_elements_located((By.CLASS_NAME, "p-channel_sidebar__link p-channel_sidebar__link--all-threads p-channel_sidebar__link--unread")))
+            threads = driver.find_element(By.CLASS_NAME, "p-channel_sidebar__link p-channel_sidebar__link--all-threads p-channel_sidebar__link--unread")
             threads.click()
 
             wait = WebDriverWait(driver, 60)
