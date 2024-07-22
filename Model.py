@@ -10,6 +10,7 @@ from PIL import Image
 import zipfile
 from io import BytesIO
 from PIL import Image
+print("Hi")
 
 # Define the dataset class
 class ImageDataset(Dataset):
