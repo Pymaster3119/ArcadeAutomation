@@ -184,6 +184,7 @@ def endSession():
             gitLink = driver.current_url
             driver.switch_to.window(driver.window_handles[0]) 
             #Upload stuff to Slack
+            print("Here")
             actionbuilder = ActionBuilder(driver)
             actionbuilder.pointer_action.move_to_location(78, 101)
             actionbuilder.pointer_action.click()
