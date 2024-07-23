@@ -8,5 +8,7 @@ To commit, I use the command line and the following commands:\
     git remote add origin <origin>\
     git push -u origin main
 
+This program was made to work with hack club's arcade
+
 Make sure you have tkinter, pygame, selenium, and math libraries installed.\
-Keep the geckodriver excecutable in this folder.
+Keep the geckodriver excecutable in this folder. 
