@@ -189,7 +189,6 @@ def endSession():
             actionbuilder.pointer_action.click()
             actionbuilder.perform()
 
-            print('Hello')
             wait = WebDriverWait(driver, 60)
             reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
             reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
@@ -203,7 +202,7 @@ def endSession():
             sendbutton.click()
 
             #Reset to the arcade
-            time.sleep(1)
+            time.sleep(2)
             driver.get(driver.current_url + "/C06SBHMQU8G")
         except:
             playSound("fileTooLarge.mp3")
