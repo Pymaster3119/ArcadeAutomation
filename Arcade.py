@@ -202,7 +202,7 @@ def endSession():
             sendbutton.click()
 
             #Reset to the arcade
-            time.sleep(2)
+            time.sleep(3)
             driver.get(driver.current_url + "/C06SBHMQU8G")
         except:
             playSound("fileTooLarge.mp3")
