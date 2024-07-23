@@ -189,6 +189,7 @@ def endSession():
             actionbuilder.pointer_action.click()
             actionbuilder.perform()
 
+            print('Hello')
             wait = WebDriverWait(driver, 60)
             reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
             reply = wait.until(expected_conditions.visibility_of_any_elements_located((By.CSS_SELECTOR, "[data-qa=\"message_input\"]")))
